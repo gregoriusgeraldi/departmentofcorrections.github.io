@@ -1,155 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Special+Elite&display=swap');
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-:root{
-    --primary:#000536;
-    --secondary:#102065;
-    --card:rgba(255,255,255,.06);
-    --card-hover:rgba(255,255,255,.09);
-    --code:#111a44;
-    --accent:#8fb3ff;
+body{
+    font-family:'Patrick Hand', cursive;
+    color:#222;
+    min-height:100vh;
+
+    /* Kertas buku */
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #f8f6ef 0px,
+            #f8f6ef 28px,
+            #d9d4c8 29px,
+            #f8f6ef 30px
+        );
+    padding:40px;
 }
 
-body{
-    background:#0a1029;
-    color:#fff;
-    font-family:Segoe UI,Arial,sans-serif;
-    min-height:100vh;
+/* Garis merah margin kiri */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:70px;
+    width:2px;
+    height:100%;
+    background:#d88f8f;
+    opacity:.7;
 }
 
 header{
-    padding:60px 20px;
-    text-align:center;
-    background:linear-gradient(135deg,var(--primary),var(--secondary));
-    box-shadow:0 4px 20px rgba(0,0,0,.3);
+    max-width:1100px;
+    margin:auto;
+    margin-bottom:30px;
 }
 
 h1{
-    font-size:48px;
-    margin-bottom:10px;
+    font-size:3rem;
+    font-weight:700;
+    color:#222;
 }
 
 .subtitle{
-    opacity:.8;
+    font-family:'Special Elite', monospace;
+    font-size:1rem;
+    color:#444;
 }
 
 .container{
     max-width:1100px;
     margin:auto;
-    padding:30px;
 }
 
-.card{
-    background:var(--card);
-    backdrop-filter:blur(8px);
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:20px;
-    transition:.3s ease;
-    border:1px solid rgba(255,255,255,.05);
-}
-
-.card:hover{
-    transform:translateY(-3px);
-    background:var(--card-hover);
-}
-
+/* Judul Section */
 .card h2{
-    margin-bottom:15px;
-    color:white;
+    display:inline-block;
+    background:#fafafa;
+    border:1px dashed #999;
+    border-radius:12px;
+    padding:8px 16px;
+    margin-bottom:20px;
+    font-size:2rem;
 }
 
+/* Hilangkan card modern */
+.card{
+    background:transparent;
+    border:none;
+    margin-bottom:50px;
+    padding:0;
+}
+
+/* Sticky note Miranda */
+.card:first-child p{
+    position:relative;
+    max-width:700px;
+    background:#f3e49a;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.15);
+    font-size:1.4rem;
+}
+
+.card:first-child p::before{
+    content:"";
+    position:absolute;
+    top:-10px;
+    left:20px;
+    width:70px;
+    height:28px;
+    background:#e8d98d;
+    transform:rotate(-5deg);
+}
+
+/* Ten Codes */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px 80px;
 }
 
 .code{
-    background:var(--code);
-    padding:12px;
-    border-radius:10px;
-    transition:.2s;
-    cursor:pointer;
-}
-
-.code:hover{
-    transform:scale(1.03);
-    background:#172868;
-}
-
-blockquote{
-    border-left:4px solid #4d7cff;
-    padding-left:15px;
-    opacity:.9;
-}
-
-h3{
-    color:var(--accent);
-    margin-top:10px;
-    margin-bottom:10px;
-}
-
-.card ul{
+    background:none;
+    border:none;
+    padding:0;
+    font-size:1.3rem;
     line-height:1.8;
-    padding-left:20px;
 }
 
-::-webkit-scrollbar{
-    width:10px;
+/* List */
+ul{
+    padding-left:30px;
 }
 
-::-webkit-scrollbar-thumb{
-    background:#2847c7;
-    border-radius:20px;
+li{
+    font-size:1.3rem;
+    line-height:1.8;
 }
 
-::-webkit-scrollbar-track{
-    background:#09102a;
+/* Quote */
+blockquote{
+    background:#fff8c9;
+    padding:20px;
+    border-left:5px solid #d8c96f;
+    border-radius:8px;
+    font-size:1.3rem;
 }
 
-@media(max-width:768px){
+/* Footer */
+.footer{
+    margin-top:60px;
+    text-align:center;
+    color:#666;
+    font-family:'Special Elite', monospace;
+    padding:20px;
+}
 
-    h1{
-        font-size:32px;
-    }
-
-    .container{
-        padding:15px;
-    }
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
-.footer {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    border-top: 1px solid #d8d8d8;
-    font-family: Georgia, serif;
-    font-size: 16px;
-    color: #6f6f6f;
-    background: #f7f6f2;
-    }
-
-.footer p {
-    margin: 0;
-    line-height: 1.5;
-    }
-
-.footer .version {
-    font-weight: 700;
-    color: #555;
-    }
-
+/* Animasi */
 .card{
     opacity:0;
     transform:translateY(20px);
-    transition:opacity .4s ease, transform .4s ease;
+    transition:.5s ease;
 }
 
 .card.show{
@@ -157,4 +155,22 @@ h3{
     transform:translateY(0);
 }
 
+@media(max-width:768px){
+
+    body{
+        padding:20px;
+    }
+
+    body::before{
+        left:35px;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+        gap:10px;
+    }
 }
