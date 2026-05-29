@@ -1,62 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Fade animation
-    const cards = document.querySelectorAll(".card");
+// Reveal animation
+const cards = document.querySelectorAll(".card");
 
-    const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-
-            if(entry.isIntersecting){
+if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
                 entry.target.classList.add("show");
-            }
-
-        });
-    });
-
-    cards.forEach(card=>{
-
-        card.style.opacity="0";
-        card.style.transform="translateY(20px)";
-        card.style.transition="all .5s ease";
-
-        observer.observe(card);
-    });
-
-    document.querySelectorAll(".card").forEach(card=>{
-
-        card.addEventListener("transitionend",()=>{
-            if(card.classList.contains("show")){
-                card.style.opacity="1";
-                card.style.transform="translateY(0)";
+                obs.unobserve(entry.target);
             }
         });
-
+    }, {
+        threshold: 0.1
     });
 
-    // Copy text ketika klik kode
-    document.querySelectorAll(".code").forEach(item=>{
+    cards.forEach(card => observer.observe(card));
+} else {
+    cards.forEach(card => card.classList.add("show"));
+}
 
-        item.addEventListener("click",()=>{
+// Copy text (Event Delegation)
+document.addEventListener("click", async (e) => {
 
-            navigator.clipboard.writeText(item.innerText);
+    const code = e.target.closest(".code");
 
-            const original=item.innerHTML;
+    if (!code) return;
 
-            item.innerHTML="✓ Copied";
+    try {
+        await navigator.clipboard.writeText(code.textContent.trim());
 
-            setTimeout(()=>{
-                item.innerHTML=original;
-            },1000);
+        const originalText = code.textContent;
 
-        });
+        code.textContent = "✓ Copied";
 
-    });
+        setTimeout(() => {
+            code.textContent = originalText;
+        }, 1000);
 
-    // Current year
-    const year=document.getElementById("year");
-
-    if(year){
-        year.textContent=new Date().getFullYear();
+    } catch (err) {
+        console.error("Copy failed", err);
     }
+
+});
+
+// Current year
+const year = document.getElementById("year");
+
+if (year) {
+    year.textContent = new Date().getFullYear();
+}
 
 });
