@@ -1,57 +1,251 @@
-document.addEventListener("DOMContentLoaded", function () {
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Special+Elite&display=swap');
 
-    // Animasi Card
-    const cards = document.querySelectorAll(".card");
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-    if (window.IntersectionObserver) {
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
+body{
+background:#ece9df;
+font-family:'Patrick Hand', cursive;
+color:#222;
+padding:40px 0;
+}
 
-        cards.forEach(function(card) {
-            observer.observe(card);
-        });
-    } else {
-        cards.forEach(function(card) {
-            card.classList.add("show");
-        });
-    }
+.paper{
 
-    // Copy Code
-    const codes = document.querySelectorAll(".code");
+width:min(1050px,95%);
+margin:auto;
 
-    codes.forEach(function(code) {
-        code.addEventListener("click", function() {
+padding:30px 60px;
 
-            const text = code.innerText;
+background:
+repeating-linear-gradient(
+to bottom,
+#f8f6ef 0px,
+#f8f6ef 28px,
+#d4d0c7 29px,
+#f8f6ef 30px
+);
 
-            navigator.clipboard.writeText(text).then(function() {
+position:relative;
 
-                const original = code.innerText;
+box-shadow:
+0 10px 30px rgba(0,0,0,.15);
+}
 
-                code.innerText = "✓ Copied";
+.paper::before{
 
-                setTimeout(function() {
-                    code.innerText = original;
-                }, 1000);
+content:"";
 
-            }).catch(function(err) {
-                console.error(err);
-            });
+position:absolute;
 
-        });
-    });
+left:45px;
+top:0;
 
-    // Tahun Otomatis
-    const year = document.getElementById("year");
+width:2px;
+height:100%;
 
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
+background:#d89a9a;
+}
 
-});
+.paper-hole{
+
+position:fixed;
+
+top:42px;
+left:35px;
+
+width:24px;
+height:24px;
+
+background:#d8d8d8;
+
+border-radius:50%;
+
+box-shadow:
+inset 0 0 0 4px #eee,
+0 2px 4px rgba(0,0,0,.2);
+}
+
+h1{
+
+font-size:3rem;
+font-weight:700;
+
+margin-bottom:5px;
+}
+
+.subtitle{
+
+font-family:'Special Elite', monospace;
+
+font-size:.95rem;
+
+color:#444;
+
+margin-bottom:25px;
+}
+
+.toolbar{
+
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+
+margin-bottom:25px;
+}
+
+.toolbar button{
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:12px;
+
+background:white;
+
+font-family:'Patrick Hand';
+
+font-size:1rem;
+
+cursor:pointer;
+
+box-shadow:
+0 3px 10px rgba(0,0,0,.15);
+}
+
+.toolbar button:hover{
+
+transform:translateY(-2px);
+}
+
+.section{
+
+margin-bottom:50px;
+}
+
+h2{
+
+display:inline-block;
+
+padding:8px 16px;
+
+background:#fafafa;
+
+border:1px dashed #999;
+
+border-radius:12px;
+
+margin-bottom:18px;
+
+font-size:1.8rem;
+}
+
+.sticky-note{
+
+background:#f0e29d;
+
+max-width:700px;
+
+padding:30px;
+
+border-radius:12px;
+
+box-shadow:
+0 4px 10px rgba(0,0,0,.15);
+
+position:relative;
+}
+
+.sticky-note::before{
+
+content:"";
+
+position:absolute;
+
+top:-10px;
+left:20px;
+
+width:70px;
+height:28px;
+
+background:#e5d78a;
+
+transform:rotate(-5deg);
+}
+
+.codes{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:8px 100px;
+
+font-size:1.25rem;
+}
+
+ul{
+
+padding-left:30px;
+font-size:1.25rem;
+}
+
+footer{
+
+margin-top:60px;
+
+text-align:center;
+
+color:#666;
+
+font-family:'Special Elite';
+}
+
+.fade{
+
+opacity:0;
+
+transform:translateY(20px);
+}
+
+.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+transition:.5s ease;
+}
+
+.hide-lines{
+
+background:#f8f6ef !important;
+}
+
+.typewriter{
+
+font-family:'Special Elite', monospace !important;
+}
+
+@media(max-width:900px){
+
+.paper{
+
+padding:25px;
+}
+
+.codes{
+
+grid-template-columns:1fr;
+gap:8px;
+}
+
+h1{
+
+font-size:2rem;
+}
+}
