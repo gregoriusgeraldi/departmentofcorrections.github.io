@@ -1,54 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-// Reveal animation
-const cards = document.querySelectorAll(".card");
+    // Animasi Card
+    const cards = document.querySelectorAll(".card");
 
-if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-                obs.unobserve(entry.target);
-            }
+    if (window.IntersectionObserver) {
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
         });
-    }, {
-        threshold: 0.1
-    });
 
-    cards.forEach(card => observer.observe(card));
-} else {
-    cards.forEach(card => card.classList.add("show"));
-}
-
-// Copy text (Event Delegation)
-document.addEventListener("click", async (e) => {
-
-    const code = e.target.closest(".code");
-
-    if (!code) return;
-
-    try {
-        await navigator.clipboard.writeText(code.textContent.trim());
-
-        const originalText = code.textContent;
-
-        code.textContent = "✓ Copied";
-
-        setTimeout(() => {
-            code.textContent = originalText;
-        }, 1000);
-
-    } catch (err) {
-        console.error("Copy failed", err);
+        cards.forEach(function(card) {
+            observer.observe(card);
+        });
+    } else {
+        cards.forEach(function(card) {
+            card.classList.add("show");
+        });
     }
 
-});
+    // Copy Code
+    const codes = document.querySelectorAll(".code");
 
-// Current year
-const year = document.getElementById("year");
+    codes.forEach(function(code) {
+        code.addEventListener("click", function() {
 
-if (year) {
-    year.textContent = new Date().getFullYear();
-}
+            const text = code.innerText;
+
+            navigator.clipboard.writeText(text).then(function() {
+
+                const original = code.innerText;
+
+                code.innerText = "✓ Copied";
+
+                setTimeout(function() {
+                    code.innerText = original;
+                }, 1000);
+
+            }).catch(function(err) {
+                console.error(err);
+            });
+
+        });
+    });
+
+    // Tahun Otomatis
+    const year = document.getElementById("year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
 
 });
