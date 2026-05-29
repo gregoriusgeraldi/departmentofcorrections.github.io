@@ -1,83 +1,121 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Department of Correction's Note</title>
+
+<title>Department of Corrections Field Notes</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div class="paper-hole"></div>
+
+<div class="paper">
+
 <header>
-    <h1>Department of Correction's Note</h1>
-    <p class="subtitle">DOC Reference Guide • Ten Codes • Callsign</p>
+
+<h1>Department of Corrections — Field Notes</h1>
+
+<p class="subtitle">
+DOC Reference Guide • Ten Codes • Callsign
+</p>
+
+<div class="toolbar">
+
+<button onclick="window.print()">
+🖨 Print / Save as PDF
+</button>
+
+<button id="toggleLines">
+📄 Toggle Lines
+</button>
+
+<button id="toggleFont">
+✍ Toggle Handwriting
+</button>
+
+</div>
+
 </header>
 
-<div class="container">
+<section class="section">
 
-<div class="card">
 <h2>Miranda Rights</h2>
-<p>"You have the right to remain silent. Anything you say can and will be used against you in the court of law. You have the right to an attorney. If you cannot afford one, one will be provided for you."</p>
+
+<div class="sticky-note">
+
+<p>
+Upon arrest, suspects must be read their Miranda Rights to ensure legality of custody and protect constitutional rights:
+</p>
+
+<br>
+
+<em>
+"You have the right to remain silent. Anything you say can and will be used against you in the court of law. You have the right to an attorney. If you cannot afford one, one will be provided for you."
+</em>
+
 </div>
 
-<div class="card">
+</section>
+
+<section class="section">
+
 <h2>Ten Codes</h2>
-<div class="grid">
-<div class="code">10-1<br>Meet me at __</div>
-<div class="code">10-2<br>Good Signal</div>
-<div class="code">10-3<br>Stop Transmitting</div>
-<div class="code">10-4<br>Roger That (OK)</div>
-<div class="code">10-7<br>Out of Service</div>
-<div class="code">10-8<br>In Service</div>
-<div class="code">10-9<br>Repeat</div>
-<div class="code">10-10<br>Fight in Progress</div>
-<div class="code">10-12<br>Standby</div>
-<div class="code">10-13A<br>Officer Down (Emergency)</div>
-<div class="code">10-13B<br>Officer Down (Non-Emergency)</div>
-<div class="code">10-14<br>EMS Down</div>
-<div class="code">10-18<br>Quickly</div>
-<div class="code">10-20<br>Location</div>
-<div class="code">10-22<br>Cancel</div>
-<div class="code">10-23<br>Arriving on Location</div>
-<div class="code">10-28<br>Info Plate</div>
-<div class="code">10-29<br>Checking Criminal Records</div>
-<div class="code">10-31A<br>Crime in Progress (House Robbery)</div>
-<div class="code">10-31B<br>Crime in Progress (Store Robbery)</div>
-<div class="code">10-32<br>Man with Firearms</div>
-<div class="code">10-34<br>Suspicious Behaviour (Narcotics)</div>
-<div class="code">10-37<br>Suspicious Vehicle (Investigation)</div>
-<div class="code">10-38<br>Stopping Suspicious Vehicle (Felony)</div>
-<div class="code">10-41<br>On Duty</div>
-<div class="code">10-42<br>Off Duty</div>
-<div class="code">10-45<br>Illegal Hunting</div>
-<div class="code">10-47<br>Injured Person</div>
-<div class="code">10-50<br>Accident</div>
-<div class="code">10-52<br>EMS Needed</div>
-<div class="code">10-55<br>Traffic Stop</div>
-<div class="code">10-57<br>Chase in Progress</div>
-<div class="code">10-60<br>Vehicle Description</div>
-<div class="code">10-61<br>Suspect Description</div>
-<div class="code">10-70<br>Fire in Progress</div>
-<div class="code">10-71<br>Shots Fired</div>
-<div class="code">10-74<br>Negative</div>
-<div class="code">10-76<br>En Route __</div>
-<div class="code">10-77<br>Need Assistance (Not Emergency)</div>
-<div class="code">10-78<br>Need Assistance (Emergency)</div>
-<div class="code">10-80<br>Officer in Danger, can't respond</div>
-<div class="code">10-89<br>Bomb Threat</div>
-<div class="code">10-90<br>Robbery in Progress (Bank/Jewel)</div>
-<div class="code">10-94<br>Drag Racing in Progress</div>
-<div class="code">10-95<br>Prisoner / Subject in Custody</div>
-<div class="code">10-97<br>Unauthorized Access</div>
-<div class="code">10-98<br>Jailbreak</div>
-<div class="code">10-99<br>Clearing Off</div>
-</div>
+
+<div class="codes">
+
+<div>➢ 10-1: Meet me at __</div>
+<div>➢ 10-41: On Duty</div>
+
+<div>➢ 10-2: Good Signal</div>
+<div>➢ 10-42: Off Duty</div>
+
+<div>➢ 10-3: Stop Transmitting</div>
+<div>➢ 10-45: Illegal Hunting</div>
+
+<div>➢ 10-4: Roger That</div>
+<div>➢ 10-47: Injured Person</div>
+
+<div>➢ 10-7: Out of Service</div>
+<div>➢ 10-50: Accident</div>
+
+<div>➢ 10-8: In Service</div>
+<div>➢ 10-52: EMS Needed</div>
+
+<div>➢ 10-9: Repeat</div>
+<div>➢ 10-55: Traffic Stop</div>
+
+<div>➢ 10-10: Fight In Progress</div>
+<div>➢ 10-57: Chase In Progress</div>
+
+<div>➢ 10-12: Standby</div>
+<div>➢ 10-60: Vehicle Description</div>
+
+<div>➢ 10-13A: Officer Down</div>
+<div>➢ 10-61: Suspect Description</div>
+
+<div>➢ 10-20: Location</div>
+<div>➢ 10-70: Fire In Progress</div>
+
+<div>➢ 10-22: Cancel</div>
+<div>➢ 10-71: Shots Fired</div>
+
 </div>
 
-<div class="card">
+</section>
+
+<section class="section">
+
 <h2>Response Codes</h2>
+
 <ul>
 <li>Code 1 — Non-emergency</li>
 <li>Code 2 — Lights only</li>
@@ -86,7 +124,8 @@
 <li>Code 6 — Investigating on foot</li>
 <li>Code 7 — Meal Break</li>
 </ul>
-</div>
+
+</section>
 
 <div class="card">
 <h2>Callsign System</h2>
@@ -104,10 +143,14 @@
 <h3>Pastikan seluruh komunikasi radio menggunakan callsign anggota dengan pangkat tertinggi yang berada di dalam fleet.</h3>
 </ul>
 </div>
+
+<br>
+<br>
     
 <div class="card">
 <h2>How to Use 10-Codes / Response Codes on Radio</h2>
 
+<div class="sticky-note">
 <h3>Pick up Request</h3>
 <div class="code">
 <li>Dispatch, 41-Bravo-151, 76 MRPD picking up 2 95 at Alta HQ with code 2, ETA 5 minutes. stand by for updates.</li>
@@ -157,6 +200,10 @@ Heading West on Vespucci Blvd, taking left at intersection, heading South on San
 
 <h3>Pastikan seluruh komunikasi radio menggunakan callsign anggota dengan pangkat tertinggi yang berada di dalam fleet.</h3>
 </div>
+</div>
+
+<br>
+<br>
 
 <div class="card">
 <h2>Escorting Roles</h2>
@@ -166,22 +213,27 @@ Heading West on Vespucci Blvd, taking left at intersection, heading South on San
 </ul>
 </div>
 
+<br>
+<br>
+
 <div class="card">
 <h2>Incident Commander</h2>
+<div class="sticky-note">
 <blockquote>
 Seorang IC harus tegas, sigap, menguasai situasi, berani mengambil keputusan, dan tidak takut menegur. IC bukan sekadar role, tapi tanggung jawab penuh atas jalannya sebuah insiden.
 </blockquote>
 </div>
+</div>
 
+<footer>
+
+Scribbled by Officer Xion Noix -yang bikinin SOP • Version 1.0
+
+</footer>
+
+</div>
 
 <script src="script.js"></script>
 
 </body>
-    
-<footer class="footer">
-    <p>
-        Scribbled by Officer Xion Noix - yang buatin kalian SOP -
-        <span class="version">v1.0</span>
-    </p>
-</footer>
 </html>
