@@ -1,40 +1,38 @@
-document.addEventListener("DOMContentLoaded", () => {
-const sections = document.querySelectorAll(".section");
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-}
-if(localStorage.getItem("darkMode") === "true"){
-document.body.classList.add("dark-mode");
-}
-});
-});
-
-sections.forEach(section => {
-section.classList.add("fade");
-observer.observe(section);
-});
-
+const body = document.body;
 const paper = document.querySelector(".paper");
-document.getElementById("toggleLines").addEventListener("click", () => {
-paper.classList.toggle("hide-lines");
+
+const applyDarkMode = (enabled) => {
+    body.classList.toggle("dark-mode", enabled);
+    localStorage.setItem("darkMode", enabled);
+};
+
+applyDarkMode(localStorage.getItem("darkMode") === "true");
+
+document.getElementById("toggleDark")?.addEventListener("click", () => {
+    applyDarkMode(!body.classList.contains("dark-mode"));
 });
 
-document.getElementById("toggleFont").addEventListener("click", () => {
-document.body.classList.toggle("typewriter");
+document.getElementById("toggleLines")?.addEventListener("click", () => {
+    paper?.classList.toggle("hide-lines");
 });
 
-const darkBtn = document.getElementById("toggleDark");
-
-darkBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark-mode");
-
-    const isDark = document.body.classList.contains("dark-mode");
-
-    localStorage.setItem("darkMode", isDark);
-
+document.getElementById("toggleFont")?.addEventListener("click", () => {
+    body.classList.toggle("typewriter");
 });
-  
+
+const observer = new IntersectionObserver(
+    (entries, observer) => {
+        entries.forEach(({ isIntersecting, target }) => {
+            if (!isIntersecting) return;
+
+            target.classList.add("show");
+            observer.unobserve(target);
+        });
+    },
+    { threshold: 0.1 }
+);
+
+document.querySelectorAll(".section").forEach((section) => {
+    section.classList.add("fade");
+    observer.observe(section);
 });
